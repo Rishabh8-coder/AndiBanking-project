@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PMDx Banking - Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+        }
+
+        .header {
+            background-color: #009688;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0px;
+            color: white;
+            position: sticky;
+            top: 0px;
+        }
+        .logo {
+            font-family: 'Satisfy', cursive;
+            font-size: 15px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            width: 221px;
+            padding: 25px;
+            background: #007d71;
+            
+        }
+        .menu-icon {
+            font-size: 31px;
+            cursor: pointer;
+            width: 1070px;
+
+        }
+        .user-icon {
+            background-color: white;
+            color: #009688;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            margin: 18px;
+        }
+
+        .dashboard-container {
+            display: flex;
+            height: 100vh;
+            
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #222d32;
+            color: white;
+            padding: 20px 0;
+        }
+
+        .sidebar .logo {
+            padding: 0 20px;
+            margin-bottom: 30px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .sider-logo{
+            margin-left: 20px;
+            padding: 10px;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+        }
+
+        .sidebar-menu li {
+            padding: 15px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar-menu li:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        .sidebar-menu li.active {
+            background-color: rgba(255,255,255,0.2);
+        }
+
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        .section-title {
+            margin-bottom: 35px;
+            font-size: 18px;
+            color: #333;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 10px;
+        }
+        .section-admin{
+            margin-bottom: 30px;
+            font-size: 30px;
+            padding: 33px;
+            background: white;
+            padding-block-start: 15px;
+            margin-left: -20px;
+            margin-right: -20px;
+            margin-top: -19px;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+            background: #fff;
+            padding: 20px;
+        }
+        .stats-grid.finance-stats {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .stats-grid.deposit-stats {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        .stat-card {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            border-radius: 8px;
+            color: white;
+        }
+        .stat-card .icon {
+            margin-right: 15px;
+            font-size: 24px;
+        }
+        .stat-card .details {
+            flex-grow: 1;
+        }
+        .stat-card .value {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .stat-card .label {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        .user-stats .stat-card:nth-child(1) { background-color: #00a86b; }
+        .user-stats .stat-card:nth-child(2) { background-color: #f44336; }
+        .user-stats .stat-card:nth-child(3) { background-color: #2196F3; }
+        .user-stats .stat-card:nth-child(4) { background-color: #2196F3; }
+        .finance-stats .stat-card:nth-child(1) { background-color: #2196F3; }
+        .finance-stats .stat-card:nth-child(2) { background-color: #4CAF50; }
+        .deposit-stats .stat-card:nth-child(1) { background-color: #00a86b; }
+        .deposit-stats .stat-card:nth-child(2) { background-color: #333; }
+        .deposit-stats .stat-card:nth-child(3) { background-color: #4CAF50; }
+
+
+
+        .main-content-other {
+            flex-grow: 1;
+            padding: 0px;
+            overflow-y: auto;
+        }
+        .section-title {
+            margin-bottom: 0px;
+            font-size: 18px;
+            color: #333;
+            background-color: rgba(0, 0, 0, 0.03)
+        }
+        .section-content{
+            display: flex;
+            background: white;
+            padding: 20px;
+        }
+        .stats-gride {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+            background: white;
+            padding: 20px;
+        }
+        .stat-card {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            border-radius: 8px;
+            color: white;
+        }
+        .stat-card .icon {
+            margin-right: 15px;
+            font-size: 24px;
+        }
+        .stat-card .details {
+            flex-grow: 1;
+        }
+        .stat-card .value {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .stat-card .label {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        .transaction-stats .stat-card:nth-child(1) { background-color: #00a86b; }
+        .transaction-stats .stat-card:nth-child(2) { background-color: #4CAF50; }
+        .transaction-stats .stat-card:nth-child(3) { background-color: #f44336; }
+        .transaction-stats .stat-card:nth-child(4) { background-color: #2196F3; }
+        .transaction-stats .stat-card:nth-child(5) { background-color: #333; }
+        .transaction-stats .stat-card:nth-child(6) { background-color: #00a86b; }
+        .withdraw-stats .stat-card:nth-child(1) { background-color: #00a86b; }
+        .withdraw-stats .stat-card:nth-child(2) { background-color: #4CAF50; }
+        .withdraw-stats .stat-card:nth-child(3) { background-color: #f44336; }
+        .withdraw-stats .stat-card:nth-child(4) { background-color: #2196F3; }
+        .withdraw-stats .stat-card:nth-child(5) { background-color: #333; }
+        .withdraw-stats .stat-card:nth-child(6) { background-color: #00a86b; }
+    </style>
+    
+</head>
+<body>
+     <div class="header">
+        
+        <div class="logo">ANDi Banking</div>
+        <div class="menu-icon">☰</div>
+        <div class="user-icon"><i class="fa-regular fa-user"</i></i></div>
+    </div>
+    <div class="dashboard-container">
+        <div class="sidebar">
+            <div class="sider-logo">
+                <p>Admin</p>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="active">Dashboard</li>
+                <li>Branch</li>
+                <li>Other banks</li>
+                <li>Deposit</li>
+                <li>Latest News</li>
+                <li>Transaction</li>
+                <li>Withdraw</li>
+                <li>User Management</li>
+                <li>Settings</li>
+                <li>Interface Control</li>
+                <li>Newsletter</li>
+                <li>Advertisement</li>
+                <li>Language</li>
+                <li>logout</li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <div class="section-admin">Admin Dashboard</div>
+            <div class="section-title"><i class="fa-solid fa-users"></i> Users Statistics</div>
+            <div class="section-content">
+                <div class="stats-grid user-stats">
+                    <div class="stat-card">
+                        <div class="icon">👤</div>
+                        <div class="details">
+                            <div class="value">0</div>
+                            <div class="label">TOTAL USERS</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="icon">🚫</div>
+                        <div class="details">
+                            <div class="value">0</div>
+                            <div class="label">TOTAL BANNED USERS</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="icon">✉️</div>
+                        <div class="details">
+                            <div class="value">0</div>
+                            <div class="label">TOTAL EMAIL UNVERIFIED USER</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="icon">📱</div>
+                        <div class="details">
+                            <div class="value">0</div>
+                            <div class="label">TOTAL PHONE UNVERIFIED USER</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+    
+            <div class="section-title"> <i class="fa-solid fa-coins"></i> Users Finance Statistics</div>
+            <div class="stats-grid finance-stats">
+                <div class="stat-card">
+                    <div class="icon">ℹ️</div>
+                    <div class="details">
+                        <div class="value">0 INR</div>
+                        <div class="label">ALL USERS DEPOSIT WALLET BALANCE</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="icon">💳</div>
+                    <div class="details">
+                        <div class="value">0 INR</div>
+                        <div class="label">ALL USERS INTEREST WALLET BALANCE</div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="section-title"> <i class="fa-solid fa-money-bill-transfer"></i> Deposit Statistics</div>
+            <div class="stats-grid deposit-stats">
+                <div class="stat-card">
+                    <div class="icon">ℹ️</div>
+                    <div class="details">
+                        <div class="value">0</div>
+                        <div class="label">TOTAL NUMBER OF DEPOSITS</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="icon">🌐</div>
+                    <div class="details">
+                        <div class="value">0 INR</div>
+                        <div class="label">TOTAL DEPOSITS AMOUNT</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="icon">💲</div>
+                    <div class="details">
+                        <div class="value">0 INR</div>
+                        <div class="label">TOTAL DEPOSITS CHARGE</div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-content-other">
+                <div class="section-title"> <i class="fa-solid fa-tent-arrow-left-right"></i> Other Bank Transaction Statistics</div>
+                <div class="stats-gride transaction-stats">
+                    <div class="stat-card">
+                        <div class="icon">ℹ️</div>
+                        <div class="details">
+                            <div class="value">0</div>
+                            <div class="label">TOTAL NUMBER OF TRANSACTION</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="icon">✔️</div>
+                        <div class="details">
+                            <div class="value">0</div>
+                            <div class="label">TOTAL NUMBER OF APPROVED TRANSACTION</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="icon">❌</div>
+                        <div class="details">
+                            <div class="value">0</div>
+                            <div class="label">TOTAL NUMBER OF REJECTED TRANSACTION</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="icon">⏳</div>
+                        <div class="details">
+                            <div class="value">0</div>
+                            <div class="label">TOTAL NUMBER OF PENDING TRANSACTION</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="icon">📊</div>
+                        <div class="details">
+                            <div class="value">0 INR</div>
+                            <div class="label">TOTAL TRANSACTION AMOUNT</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="icon">💲</div>
+                        <div class="details">
+                            <div class="value">0 INR</div>
+                            <div class="label">TOTAL TRANSACTION CHARGE</div>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="section-title"> <i class="fa-solid fa-money-bill-transfer"></i> Withdraw Statistics</div>
+                <div class="stats-gride withdraw-stats">
+                    <div class="stat-card">
+                        <div class="icon">ℹ️</div>
+                        <div class="details">
+                            <div class="value">0</div>
+                            <div class="label">TOTAL NUMBER OF WITHDRAWS</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="icon">✔️</div>
+                        <div class="details">
+                            <div class="value">0</div>
+                            <div class="label">TOTAL NUMBER OF APPROVED WITHDRAWS</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="icon">❌</div>
+                        <div class="details">
+                            <div class="value">0</div>
+                            <div class="label">TOTAL NUMBER OF REJECTED WITHDRAWS</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="icon">⏳</div>
+                        <div class="details">
+                            <div class="value">0</div>
+                            <div class="label">TOTAL NUMBER OF PENDING WITHDRAWS</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="icon">📊</div>
+                        <div class="details">
+                            <div class="value">0 INR</div>
+                            <div class="label">TOTAL WITHDRAW AMOUNT</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="icon">💲</div>
+                        <div class="details">
+                            <div class="value">0 INR</div>
+                            <div class="label">TOTAL WITHDRAW CHARGE</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
