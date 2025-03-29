@@ -47,7 +47,11 @@
         }
 
         .main-content {
-            margin: 2rem;
+            /* margin: 2rem; */
+            /* display: flex; */
+            flex-wrap: wrap;
+            gap: 1rem;
+            /* justify-content: center; */
         }
 
         .card {
@@ -107,13 +111,16 @@
         <a href="user.html"><i class="fa-solid fa-user"></i>User</a>
         <a href="financial.html"><i class="fa-solid fa-coins"></i>Financial</a>
         <a href="deposit.html"><i class="fa-solid fa-money-bill-transfer"></i>Deposits</a>
+        <a href="transactions.html"> <i class="fa-solid fa-tent-arrow-left-right"></i> Other Bank Transactions</a>
+        <a href="withdraw.html"><i class="fa-solid fa-money-bill-transfer"></i> Withdraw Statistics</a>
         <a href="contact.html"><i class="fa-solid fa-address-book"></i>Contact</a>
+
     </nav>
     <div class="main-content">
         <section class="card">
             <img src="user-statictis.png" alt="User Icon">
             <div>
-                <h2>User Statistics</h2>
+                <h2> <i class="fa-solid fa-user"></i> User Statistics</h2>
                 <p>Manage and track user data, including verification and banned users.</p>
                 <div class="button-container">
                     <button onclick="window.location.href='user.html'">View Details</button>
@@ -124,7 +131,7 @@
         <section class="card">
             <img src="finincial.jpeg" alt="Financial Icon">
             <div>
-                <h2>Financial Insights</h2>
+                <h2><i class="fa-solid fa-coins"></i> Financial Insights</h2>
                 <p>Real-time wallet insights for deposits, interests, and balances.</p>
                 <div class="button-container">
                     <button onclick="window.location.href='financial.html'">View Details</button>
@@ -135,10 +142,32 @@
         <section class="card">
             <img src="deposit.avif" alt="Deposits Icon">
             <div>
-                <h2>Deposit Statistics</h2>
+                <h2><i class="fa-solid fa-money-bill-transfer"></i> Deposit Statistics</h2>
                 <p>Track deposit data, total deposits, and transparent reporting.</p>
                 <div class="button-container">
                     <button onclick="window.location.href='deposit.html'">View Details</button>
+                </div>
+            </div>
+        </section>
+        <section class="card">
+            <img src="otherbnk.jpg" alt="Transaction Icon">
+            <div>
+                <h2><i class="fa-solid fa-tent-arrow-left-right"></i> Other Bank Transactions</h2>
+                <p>Monitor transaction breakdowns for other banks in real time.</p>
+                <div class="button-container">
+                    <button onclick="window.location.href='transactions.html'">View Details</button>
+                </div>
+            </div>  
+            
+        </section>
+
+        <section class="card">
+            <img src="withdraw.avif" alt="Withdraw Icon">
+            <div>
+                <h2><i class="fa-solid fa-money-bill-transfer"></i> Withdraw Statistics</h2>
+                <p>Track all withdrawals, including approved, rejected, and pending statuses.</p>
+                <div class="button-container">
+                    <button onclick="window.location.href='withdraw.html'">View Details</button>
                 </div>
             </div>
         </section>
