@@ -5,107 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ANDI Banking Dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-        }
-
-        header {
-            background-color: #0066cc;
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-        }
-
-        header h1 {
-            margin: 0;
-        }
-
-        nav {
-            background-color: #333;
-            color: white;
-            display: flex;
-            justify-content: center;
-            padding: 1rem;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: white;
-            margin: 0 1rem;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-        }
-
-        nav a:hover {
-            background-color: #0066cc;
-        }
-
-        .main-content {
-            /* margin: 2rem; */
-            /* display: flex; */
-            flex-wrap: wrap;
-            gap: 1rem;
-            /* justify-content: center; */
-        }
-
-        .card {
-            background-color: white;
-            padding: 1.5rem;
-            margin: 1rem 0;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            display: flex;
-            align-items: center;
-        }
-
-        .card img {
-            width: 325px;
-            height: 176px;
-            margin-right: 1.5rem;
-            border-radius: 8px;
-        }
-
-        .button-container {
-            margin-top: 1rem;
-        }
-
-        .button-container button {
-            background-color: #0066cc;
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .button-container button:hover {
-            background-color: #0052a3;
-        }
-
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 1rem;
-            margin-top: 2rem;
-        }
-
-        footer a {
-            color: #0066cc;
-            text-decoration: none;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
         <h1>ANDI Banking Dashboard</h1>
         <p>Dashboard | Key Benefits</p>
+        <button class="login" onclick="window.location.href='login.html'">login</button>
     </header>
     <nav>
         <a href="user.html"><i class="fa-solid fa-user"></i>User</a>
@@ -167,7 +73,7 @@
                 <h2><i class="fa-solid fa-money-bill-transfer"></i> Withdraw Statistics</h2>
                 <p>Track all withdrawals, including approved, rejected, and pending statuses.</p>
                 <div class="button-container">
-                    <button onclick="window.location.href='withdraw.html'">View Details</button>
+                    <button onclick="window.location.href='withdraw1.html'">View Details</button>
                 </div>
             </div>
         </section>
